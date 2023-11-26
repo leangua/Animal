@@ -1,0 +1,46 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+public class Animais {
+    static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        boolean flagContinuar = true;
+        List<Animal> listaAnimais = new ArrayList<Animal>();
+
+        while (flagContinuar){
+            System.out.printf("%s\n\t%s\n\t%s\n\t%s\n%s",
+                    "=".repeat(5)+"Cadastro de Animais"+ "=".repeat(5),
+                    "0 - Sair",
+                    "1 - Cadastrar Animal",
+                    "2 - Cutucar o Animal",
+                    "Digite a opcao desejada: ");
+            int opcao = Integer.parseInt(sc.nextLine());
+            switch (opcao){
+                case 0 : {
+                    flagContinuar = false;
+                    System.out.println("Até Logo");
+                    break;
+                }
+                case 1 : {
+                    System.out.print("Primeiro, digite o habitat (A)quatico ou (T)errestre: ");
+                    String habitat = sc.nextLine();
+                    System.out.print("Agora, digite o porte Pequeno, Medio ou Grande: ");
+                    String porte = sc.nextLine();
+                    System.out.print("Agora, digite a especie: ");
+                    String especie = sc.nextLine();
+                    Animal animal = new Animal(habitat, porte, especie);
+                    listaAnimais.add(animal);
+                    System.out.println(animal);
+                    break;
+                }
+                case 2 : {
+                    Animal animal = listaAnimais.get(0);
+                    System.out.println(animal.acao("cutucar"));
+                }
+            }
+        }
+
+    }
+}
+
